@@ -6,7 +6,7 @@
 /*   By: cle-tort <cle-tort@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/16 15:22:25 by cle-tort          #+#    #+#             */
-/*   Updated: 2024/05/16 17:37:18 by cle-tort         ###   ########.fr       */
+/*   Updated: 2024/05/19 21:28:24 by cle-tort         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,14 @@
 int	ft_countdigits(long n)
 {
 	int	j;
+
 	j = 1;
 	if (n < 0)
 	{
 		n = -n;
 		j++;
 	}
-	while(n > 9)
+	while (n > 9)
 	{
 		n /= 10;
 		j++;
@@ -32,12 +33,12 @@ int	ft_countdigits(long n)
 char	*ft_itoa(int n)
 {
 	char	*str;
-	int	count;
+	int		count;
 	long	nb;
 
 	nb = (long) n;
 	count = ft_countdigits(nb);
-	str = malloc(sizeof(char) * (count+ 1));
+	str = malloc(sizeof(char) * (count + 1));
 	if (!str)
 		return (NULL);
 	str[count] = 0;
@@ -56,8 +57,8 @@ char	*ft_itoa(int n)
 	}
 	return (str);
 }
-#include <stdio.h>
-/*
+/*#include <stdio.h>
+
 int main(int argc, char **argv)
 {
 	printf("%s\n", ft_itoa(INT_MIN));

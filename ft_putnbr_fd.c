@@ -6,7 +6,7 @@
 /*   By: cle-tort <cle-tort@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/16 14:38:11 by cle-tort          #+#    #+#             */
-/*   Updated: 2024/05/17 11:31:18 by cle-tort         ###   ########.fr       */
+/*   Updated: 2024/05/19 21:14:34 by cle-tort         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ void	ft_putnbr_fd(int n, int fd)
 	{
 		c = nbr + '0';
 		write(fd, &c, 1);
+		return ;
 	}
 	if (nbr >= 9)
 	{
@@ -34,9 +35,3 @@ void	ft_putnbr_fd(int n, int fd)
 		ft_putnbr_fd(nbr % 10, fd);
 	}
 }
-/*#include <stdio.h>
-
-int main(int argc, char **argv)
-{
-	ft_putnbr_fd(atoi(argv[1]), 1);
-}*/

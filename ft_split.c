@@ -6,16 +6,16 @@
 /*   By: cle-tort <cle-tort@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/16 13:47:06 by cle-tort          #+#    #+#             */
-/*   Updated: 2024/05/17 13:30:23 by cle-tort         ###   ########.fr       */
+/*   Updated: 2024/05/19 21:28:45 by cle-tort         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int countwords(char const *s, char sep)
+int	countwords(char const *s, char sep)
 {
 	size_t	i;
-	int	j;
+	int		j;
 
 	i = 0;
 	j = 0;
@@ -30,7 +30,7 @@ int countwords(char const *s, char sep)
 	return (j);
 }
 
-char **countletters(char const *s, char sep, char **dest)
+char	**countletters(char const *s, char sep, char **dest)
 {
 	int	i;
 	int	j;
@@ -88,12 +88,10 @@ void	gigachadsplit(char const *s, char sep, char **dest)
 	}
 }
 
-
 char	**ft_split(char const *s, char c)
 {
-	int	countw;
+	int		countw;
 	char	**dest;
-
 
 	countw = countwords(s, c);
 	dest = malloc(sizeof(char *) * (countw + 1));
@@ -112,4 +110,3 @@ int main(int argc, char **argv)
 	ft_split("tripouille", 0);
 	//printf("countwords : %d", countwords(argv[1], 'x'));
 }*/
-

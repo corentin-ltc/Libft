@@ -6,28 +6,47 @@
 /*   By: cle-tort <cle-tort@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/15 17:54:24 by cle-tort          #+#    #+#             */
-/*   Updated: 2024/05/15 19:14:55 by cle-tort         ###   ########.fr       */
+/*   Updated: 2024/05/19 21:23:50 by cle-tort         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
 int	checkchar(char c, const char *set);
-
-size_t ft_len(const char *s1, const char *set)
+/*
+size_t	ft_strlen(const char *s)
 {
 	int	i;
-	int	k;
 
 	i = 0;
+	while (s[i] != '\0')
+		i++;
+	return (i);
+}*/
+
+size_t	ft_len(const char *s1, const char *set)
+{
+	size_t		i;
+	int			k;
+	size_t		endstr;
+
+	endstr = ft_strlen(s1);
+	i = 0;
 	k = 0;
-	while(s1[i])
+	while (endstr > 0 && !checkchar(s1[endstr - 1], set))
+		endstr--;
+	if (endstr == 0)
+		return (0);
+	while (s1[i] && k == 0)
 	{
-		if (!checkchar(s1[i], set))
+		if (checkchar(s1[i], set))
+		{
 			k++;
+			return (endstr - i);
+		}
 		i++;
 	}
-	return(ft_strlen(s1) - k);
+	return (0);
 }
 
 int	checkchar(char c, const char *set)
@@ -48,21 +67,26 @@ char	*ft_strtrim(char const *s1, char const *set)
 {
 	char	*dest;
 	size_t	len;
-	int		i;
+	size_t	i;
 	int		k;
+	size_t	endstr;
 
+	endstr = ft_strlen(s1);
 	len = ft_len(s1, set);
 	dest = malloc(sizeof(char) * (len + 1));
-	i = 0;
+	if (!dest)
+		return (NULL);
+	i = -1;
 	k = 0;
-	while (s1[i])
+	while (endstr > 0 && !checkchar(s1[endstr - 1], set))
+		endstr--;
+	while (s1[++i] && endstr > i && len > 0)
 	{
-		if (checkchar(s1[i], set))
+		if (checkchar(s1[i], set) || k > 0)
 		{
 			dest[k] = s1[i];
 			k++;
 		}
-		i++;
 	}
 	dest[k] = 0;
 	return (dest);
@@ -72,7 +96,7 @@ char	*ft_strtrim(char const *s1, char const *set)
 int main (int argc, char **argv)
 {
 
-	printf("%s\n", ft_strtrim("abcdba", "acb"));
-	//printf("%s\n", ft_strtrim(argv[1], argv[2]));
+	//printf("%s\n", ft_strtrim("ttatatt", "t"));
+	printf("%s\n", ft_strtrim(argv[1], argv[2]));
 }
 */

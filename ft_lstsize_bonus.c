@@ -1,26 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_striteri.c                                      :+:      :+:    :+:   */
+/*   ft_lstsize_bonus.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cle-tort <cle-tort@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/17 11:06:12 by cle-tort          #+#    #+#             */
-/*   Updated: 2024/05/19 21:15:19 by cle-tort         ###   ########.fr       */
+/*   Created: 2024/05/19 21:09:37 by cle-tort          #+#    #+#             */
+/*   Updated: 2024/05/19 21:31:45 by cle-tort         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_striteri(char *s, void (*f)(unsigned int, char*))
+int	ft_lstsize(t_list *lst)
 {
-	size_t	i;
+	int		i;
+	t_list	*move;
 
+	move = lst;
 	i = 0;
-	i = 0;
-	while (s[i])
+	while (move)
 	{
-		f(i, &s[i]);
 		i++;
+		move = move->next;
 	}
+	return (i);
 }

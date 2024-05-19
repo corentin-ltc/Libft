@@ -6,7 +6,7 @@
 /*   By: cle-tort <cle-tort@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/14 10:22:11 by cle-tort          #+#    #+#             */
-/*   Updated: 2024/05/14 16:47:32 by cle-tort         ###   ########.fr       */
+/*   Updated: 2024/05/19 21:29:26 by cle-tort         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,18 +14,19 @@
 
 void	*ft_memcpy(void *dest, const void *src, size_t n)
 {
-	int		i;
+	size_t	i;
 	char	*str;
 	char	*strd;
 
+	if (!dest && !src)
+		return (NULL);
 	str = (char *)dest;
 	strd = (char *)src;
 	i = 0;
-	while (n > 0)
+	while (n > i)
 	{
 		str[i] = strd[i];
 		i++;
-		n--;
 	}
 	return (dest);
 }

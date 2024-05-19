@@ -1,26 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_striteri.c                                      :+:      :+:    :+:   */
+/*   ft_lstmap_bonus.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cle-tort <cle-tort@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/17 11:06:12 by cle-tort          #+#    #+#             */
-/*   Updated: 2024/05/19 21:15:19 by cle-tort         ###   ########.fr       */
+/*   Created: 2024/05/19 21:06:54 by cle-tort          #+#    #+#             */
+/*   Updated: 2024/05/19 21:52:51 by cle-tort         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_striteri(char *s, void (*f)(unsigned int, char*))
+t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 {
-	size_t	i;
+	t_list		*newlst;
+	t_list		*tmp;
 
-	i = 0;
-	i = 0;
-	while (s[i])
+	if (!lst)
+		return (NULL);
+	newlst = ft_lstnew(f(lst->content));
+	if (!newlst)
+		return (NULL);
+	tmp = newlst;
+	while (lst->next)
 	{
-		f(i, &s[i]);
-		i++;
+		lst = lst->next;
+		tmp->next = ft_lstnew(f(lst->content));
+		if (!(tmp->next))
+		{
+			ft_lstclear(&newlst, del);
+			return (NULL);
+		}
+		tmp = tmp->next;
 	}
+	tmp->next = NULL;
+	return (newlst);
 }

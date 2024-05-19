@@ -6,7 +6,7 @@
 /*   By: cle-tort <cle-tort@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/15 10:30:44 by cle-tort          #+#    #+#             */
-/*   Updated: 2024/05/15 16:32:57 by cle-tort         ###   ########.fr       */
+/*   Updated: 2024/05/19 21:18:37 by cle-tort         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,6 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 		len--;
 	}
 	return (ft_substr2(s, start, sizem));
-
 }
 /*
 #include <stdio.h>
