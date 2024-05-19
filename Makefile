@@ -16,7 +16,7 @@ CC = cc
 	${CC} ${FLAGS} -c $< -o $@
 
 ${NAME}: ${OBJS}
-		ar rc ${NAME} ${OBJS} ${NAME}
+		ar rcs ${NAME} ${OBJS} ${NAME}
 
 all: ${NAME}
 
