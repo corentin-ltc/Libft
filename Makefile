@@ -24,7 +24,7 @@ clean:
 	rm -f ${OBJS} ${OBJSBONUS}
 
 bonus: ${OBJSBONUS} ${OBJS}
-		ar rc ${NAME} ${OBJS} ${OBJSBONUS} ${NAME}
+		ar rcs ${NAME} ${OBJS} ${OBJSBONUS} ${NAME}
 	
 fclean: clean
 		rm -f ${NAME}
