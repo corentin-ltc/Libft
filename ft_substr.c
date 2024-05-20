@@ -6,20 +6,20 @@
 /*   By: cle-tort <cle-tort@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/15 10:30:44 by cle-tort          #+#    #+#             */
-/*   Updated: 2024/05/19 21:18:37 by cle-tort         ###   ########.fr       */
+/*   Updated: 2024/05/20 14:36:14 by cle-tort         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	checkstart(char const *s, unsigned int start)
+static int	checkstart(char const *s, unsigned int start)
 {
 	if (ft_strlen(s) <= start)
 		return (0);
 	return (1);
 }
 
-char	*ft_substr2(const char *s, unsigned int start, size_t sizem)
+static char	*ft_substr2(const char *s, unsigned int start, size_t sizem)
 {
 	char	*str;
 	size_t	i;
@@ -43,9 +43,13 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	size_t	i;
 	size_t	sizem;
 
+	if (!s)
+		return (NULL);
 	if (!checkstart(s, start))
 	{
 		str = malloc(sizeof(char));
+		if (!str)
+			return (NULL);
 		str[0] = 0;
 		return (str);
 	}

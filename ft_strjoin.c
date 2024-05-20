@@ -6,7 +6,7 @@
 /*   By: cle-tort <cle-tort@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/15 17:28:12 by cle-tort          #+#    #+#             */
-/*   Updated: 2024/05/15 18:00:43 by cle-tort         ###   ########.fr       */
+/*   Updated: 2024/05/20 13:59:09 by cle-tort         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	int		i;
 	int		j;
 
+	if (!s1 || !s2)
+		return (NULL);
 	len = ft_strlen(s1) + ft_strlen(s2);
 	dest = malloc(sizeof(char) * (len + 1));
 	if (!dest)

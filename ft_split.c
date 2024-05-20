@@ -6,13 +6,13 @@
 /*   By: cle-tort <cle-tort@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/16 13:47:06 by cle-tort          #+#    #+#             */
-/*   Updated: 2024/05/19 21:28:45 by cle-tort         ###   ########.fr       */
+/*   Updated: 2024/05/20 14:19:27 by cle-tort         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	countwords(char const *s, char sep)
+static int	countwords(char const *s, char sep)
 {
 	size_t	i;
 	int		j;
@@ -30,7 +30,16 @@ int	countwords(char const *s, char sep)
 	return (j);
 }
 
-char	**countletters(char const *s, char sep, char **dest)
+static void	freeall(char **dest, int k)
+{
+	while (k >= 0)
+	{
+		free(dest[k]);
+		k--;
+	}
+}
+
+static char	**countletters(char const *s, char sep, char **dest)
 {
 	int	i;
 	int	j;
@@ -41,16 +50,16 @@ char	**countletters(char const *s, char sep, char **dest)
 	j = 0;
 	while (s[i])
 	{
-		while (s[i] && s[i] != sep)
-		{
-			i++;
+		while (s[i] && s[i] != sep && s[i++])
 			j++;
-		}
 		if (j > 0)
 		{
 			dest[k] = malloc(sizeof(char) * (j + 1));
 			if (!dest[k++])
+			{
+				freeall(dest, k - 2);
 				return (NULL);
+			}
 		}
 		if (s[i++] == 0)
 			return (dest);
@@ -59,7 +68,7 @@ char	**countletters(char const *s, char sep, char **dest)
 	return (dest);
 }
 
-void	gigachadsplit(char const *s, char sep, char **dest)
+static void	gigachadsplit(char const *s, char sep, char **dest)
 {
 	int	i;
 	int	j;
@@ -93,12 +102,15 @@ char	**ft_split(char const *s, char c)
 	int		countw;
 	char	**dest;
 
+	if (!s)
+		return (NULL);
 	countw = countwords(s, c);
 	dest = malloc(sizeof(char *) * (countw + 1));
 	if (!dest)
 		return (NULL);
 	dest[countw] = 0;
-	countletters(s, c, dest);
+	if (!countletters(s, c, dest))
+		return (NULL);
 	gigachadsplit(s, c, dest);
 	return (dest);
 }
@@ -107,6 +119,9 @@ char	**ft_split(char const *s, char c)
 
 int main(int argc, char **argv)
 {
-	ft_split("tripouille", 0);
+	char *t;
+
+	t = NULL;
+	ft_split(t, 0);
 	//printf("countwords : %d", countwords(argv[1], 'x'));
 }*/

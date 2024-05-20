@@ -6,25 +6,15 @@
 /*   By: cle-tort <cle-tort@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/15 17:54:24 by cle-tort          #+#    #+#             */
-/*   Updated: 2024/05/19 21:23:50 by cle-tort         ###   ########.fr       */
+/*   Updated: 2024/05/20 14:36:34 by cle-tort         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	checkchar(char c, const char *set);
-/*
-size_t	ft_strlen(const char *s)
-{
-	int	i;
+static int	checkchar(char c, const char *set);
 
-	i = 0;
-	while (s[i] != '\0')
-		i++;
-	return (i);
-}*/
-
-size_t	ft_len(const char *s1, const char *set)
+static size_t	ft_len(const char *s1, const char *set)
 {
 	size_t		i;
 	int			k;
@@ -49,7 +39,7 @@ size_t	ft_len(const char *s1, const char *set)
 	return (0);
 }
 
-int	checkchar(char c, const char *set)
+static int	checkchar(char c, const char *set)
 {
 	int	i;
 
@@ -71,6 +61,8 @@ char	*ft_strtrim(char const *s1, char const *set)
 	int		k;
 	size_t	endstr;
 
+	if (!s1)
+		return (NULL);
 	endstr = ft_strlen(s1);
 	len = ft_len(s1, set);
 	dest = malloc(sizeof(char) * (len + 1));
@@ -83,10 +75,7 @@ char	*ft_strtrim(char const *s1, char const *set)
 	while (s1[++i] && endstr > i && len > 0)
 	{
 		if (checkchar(s1[i], set) || k > 0)
-		{
-			dest[k] = s1[i];
-			k++;
-		}
+			dest[k++] = s1[i];
 	}
 	dest[k] = 0;
 	return (dest);
